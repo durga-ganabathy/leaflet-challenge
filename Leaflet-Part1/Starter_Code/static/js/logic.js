@@ -29,7 +29,7 @@ function generateColor(depth){
 }
 
 // To create datamarkers whose size reflect the magnitude of earthquake and color reflect the depth of earthquake
-function generateCircleMarker(feature,magnitudeSize){
+function generateCircleMarker(feature){
     let stylingOptions= {
     radius: Math.sqrt(Math.abs(feature.properties.mag)) * 5,
     fillColor: generateColor(feature.geometry.coordinates[2]),
@@ -38,7 +38,7 @@ function generateCircleMarker(feature,magnitudeSize){
     opacity: 1,
     fillOpacity: 0.8
  }
- return L.circleMarker(magnitudeSize,stylingOptions);
+ return L.circleMarker([feature.geometry.coordinates[1],feature.geometry.coordinates[0]],stylingOptions);
 }
 
 
